@@ -27,7 +27,7 @@ let result = '';
 
 for (let i = 0; i < objDay.length; i++) {
     let helper = 0;
-    weekNumber % 2 === 0 ? helper = 1 : helper = 0
+    weekNumber % 2 === 0 ? helper = 0 : helper = 1
     if (i % 2 !== helper) {
         if (today === objDay[i][1]) {
             result = result + "<span class='dayBox colar'>" + objDay[i][0] + "</span>"
