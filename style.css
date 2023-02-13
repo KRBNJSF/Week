@@ -7,6 +7,7 @@ body, html {
     align-items: center;
     font-family: cursive;
     font-size: 2rem;
+    background: #e0e0e0;
 }
 
 .box {
@@ -14,8 +15,23 @@ body, html {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 25px;
+}
+
+.dayBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    background: rgba(0,0,0,.1);
+    background: #e0e0e0;
+    box-shadow:  7px 7px 21px #bebebe,
+    -7px -7px 21px #ffffff;
 }
 
 .colar {
-    color: red;
+    color: white;
+    background: rgba(255,0,0,.65);
 }

@@ -15,10 +15,10 @@ let today = new Date().getDay();
 
 let objDay = [
     ["Po", 1],
-    ["Ut", 2],
+    ["Út", 2],
     ["St", 3],
-    ["Ct", 4],
-    ["Pa", 5],
+    ["Čt", 4],
+    ["Pá", 5],
     ["So", 6],
     ["Ne", 7]
 ];
@@ -26,18 +26,19 @@ let objDay = [
 let result = '';
 
 for (let i = 0; i < objDay.length; i++) {
-    if (i % 2 != 0) {
-      //pridat weekDay podminku
-        if (today == objDay[i][1]) {
-            result = result + "<span class='colar'>" + objDay[i][0] + "</span> "
+    let helper = 0;
+    weekNumber % 2 === 0 ? helper = 1 : helper = 0
+    if (i % 2 !== helper) {
+        if (today === objDay[i][1]) {
+            result = result + "<span class='dayBox colar'>" + objDay[i][0] + "</span>"
         }
         else {
-            result = result + " " + objDay[i][0]
+            result = result + "<span class='dayBox'>" + objDay[i][0] + "</span>"
         }
     }
 }
 
-
+//https://neumorphism.io/#e0e0e0
 //https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
 // box.innerText = weekNumber % 2 == 0 ? "Po, St, Pá, Ne" : "Út, Čt, So";
 box.innerHTML = result;
