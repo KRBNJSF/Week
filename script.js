@@ -27,6 +27,7 @@ let result = '';
 
 for (let i = 0; i < objDay.length; i++) {
     if (i % 2 != 0) {
+      //pridat weekDay podminku
         if (today == objDay[i][1]) {
             result = result + "<span class='colar'>" + objDay[i][0] + "</span> "
         }
@@ -37,7 +38,7 @@ for (let i = 0; i < objDay.length; i++) {
 }
 
 
-
+//https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
 // box.innerText = weekNumber % 2 == 0 ? "Po, St, Pá, Ne" : "Út, Čt, So";
 box.innerHTML = result;
 
