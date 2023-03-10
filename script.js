@@ -1,3 +1,20 @@
+window.addEventListener("load", async () => {
+    await sleep(1500);
+    document.getElementById("loader").style.opacity = "0";
+    await sleep(500);
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("box").style.display = "flex";
+    document.getElementById("trashBox").style.display = "block";
+    await sleep(200);
+    document.getElementById("box").style.opacity = "10";
+    document.getElementById("trashBox").style.opacity = "10";
+
+})
+
+const sleep = (ms) => new Promise(r => {
+    setTimeout(r, ms)
+});
+
 let currentDate = new Date();
 let startDate = new Date(currentDate.getFullYear(), 0, 1);
 
@@ -25,14 +42,21 @@ let objDay = [
 
 let result = '';
 
+if (weekNumber % 2 == 0) {
+    const trashBox = document.createElement("div");
+    trashBox.id = "trashBox";
+    trashBox.classList.add("trashBox");
+    trashBox.innerHTML = "<span>Popelnice</span>";
+    document.body.appendChild(trashBox);
+}
+
 for (let i = 0; i < objDay.length; i++) {
     let helper = 0;
     weekNumber % 2 === 0 ? helper = 0 : helper = 1
     if (i % 2 !== helper) {
         if (today === objDay[i][1]) {
-            result = result + "<span class='dayBox colar'>" + objDay[i][0] + "</span>"
-        }
-        else {
+            result = result + "<span class='dayBox selectedDay'>" + objDay[i][0] + "</span>"
+        } else {
             result = result + "<span class='dayBox'>" + objDay[i][0] + "</span>"
         }
     }
