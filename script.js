@@ -17,11 +17,12 @@ const sleep = (ms) => new Promise(r => {
 
 let currentDate = new Date();
 let startDate = new Date(currentDate.getFullYear(), 0, 1);
+let differenceBetweenDates = (currentDate - startDate) + (startDate.getTimezoneOffset() - currentDate.getTimezoneOffset()) * 60; // *60 to get offset int hours
+let millisecondsInDay = 1000 * 60 * 60 * 24;
 
-const days = Math.floor((currentDate - startDate) /
-    (24 * 60 * 60 * 1000));
+const dayOfTheYear = Math.floor((differenceBetweenDates) / (millisecondsInDay));
 
-const weekNumber = Math.ceil(days / 7);
+const weekOfTheYear = Math.ceil(dayOfTheYear / 7);
 
 const box = document.createElement("div");
 box.id = "box";
@@ -42,7 +43,7 @@ let objDay = [
 
 let result = '';
 
-if (weekNumber % 2 == 0) {
+if (weekOfTheYear % 2 == 0) {
     const trashBox = document.createElement("div");
     trashBox.id = "trashBox";
     trashBox.classList.add("trashBox");
@@ -52,7 +53,7 @@ if (weekNumber % 2 == 0) {
 
 for (let i = 0; i < objDay.length; i++) {
     let helper = 0;
-    weekNumber % 2 === 0 ? helper = 0 : helper = 1
+    weekOfTheYear % 2 === 0 ? helper = 0 : helper = 1
     if (i % 2 !== helper) {
         if (today === objDay[i][1]) {
             result = result + "<span class='dayBox selectedDay'>" + objDay[i][0] + "</span>"
@@ -64,9 +65,9 @@ for (let i = 0; i < objDay.length; i++) {
 
 //https://neumorphism.io/#e0e0e0
 //https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
-// box.innerText = weekNumber % 2 == 0 ? "Po, St, Pá, Ne" : "Út, Čt, So";
+// box.innerText = weekOfTheYear % 2 == 0 ? "Po, St, Pá, Ne" : "Út, Čt, So";
 box.innerHTML = result;
 
 console.log("Week number of " + currentDate +
-    " is : " + weekNumber);
+    " is : " + weekOfTheYear);
 
