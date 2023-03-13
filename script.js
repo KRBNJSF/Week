@@ -4,10 +4,14 @@ window.addEventListener("load", async () => {
     await sleep(500);
     document.getElementById("loader").style.display = "none";
     document.getElementById("box").style.display = "flex";
+    if (weekOfTheYear % 2 == 0) {
     document.getElementById("trashBox").style.display = "block";
+     }
     await sleep(200);
     document.getElementById("box").style.opacity = "10";
+    if (weekOfTheYear % 2 == 0) {
     document.getElementById("trashBox").style.opacity = "10";
+    }
 
 })
 
