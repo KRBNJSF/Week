@@ -4,10 +4,14 @@ window.addEventListener("load", async () => {
     await sleep(500);
     document.getElementById("loader").style.display = "none";
     document.getElementById("box").style.display = "flex";
-    document.getElementById("trashBox").style.display = "block";
+    if (weekOfTheYear % 2 == 0) {
+        document.getElementById("trashBox").style.display = "block";
+    }
     await sleep(200);
     document.getElementById("box").style.opacity = "10";
-    document.getElementById("trashBox").style.opacity = "10";
+    if (weekOfTheYear % 2 == 0) {
+        document.getElementById("trashBox").style.opacity = "10";
+    }
 
 })
 
@@ -29,7 +33,9 @@ box.id = "box";
 box.classList.add("box");
 document.body.appendChild(box);
 
-let today = new Date().getDay();
+let today = currentDate.getDay();
+
+console.log(today)
 
 let objDay = [
     ["Po", 1],
@@ -38,7 +44,7 @@ let objDay = [
     ["Čt", 4],
     ["Pá", 5],
     ["So", 6],
-    ["Ne", 7]
+    ["Ne", 0]
 ];
 
 let result = '';
