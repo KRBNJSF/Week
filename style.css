@@ -22,12 +22,10 @@ body, html {
     transition: 300ms opacity;
 }
 
-.dayBox {
+.basic-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120px;
-    height: 120px;
     border-radius: 15px;
     background: rgba(0, 0, 0, .1);
     background: #e0e0e0;
@@ -35,7 +33,17 @@ body, html {
     -7px -7px 21px #ffffff;
 }
 
-.selectedDay {
+.day-box {
+    width: 120px;
+    height: 120px;
+}
+
+.trash {
+    width: 410px;
+    height: 120px;
+}
+
+.selected {
     color: white;
     background: rgba(255, 0, 0, .65);
 }
@@ -95,5 +103,17 @@ body, html {
     }
     100% {
         height: 10px;
+    }
+}
+
+@media screen and (max-width: 409px) {
+    .trash {
+        width: 85vw;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .trash {
+        width: 100vw;
     }
 }

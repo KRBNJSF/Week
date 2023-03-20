@@ -21,7 +21,7 @@ const sleep = (ms) => new Promise(r => {
 
 let currentDate = new Date();
 let startDate = new Date(currentDate.getFullYear(), 0, 1);
-let differenceBetweenDates = (currentDate - startDate) + (startDate.getTimezoneOffset() - currentDate.getTimezoneOffset()) * 60; // *60 to get offset int hours
+let differenceBetweenDates = (currentDate - startDate) + (startDate.getTimezoneOffset() - currentDate.getTimezoneOffset()) * 60; // *60 to get offset in hours
 let millisecondsInDay = 1000 * 60 * 60 * 24;
 
 const dayOfTheYear = Math.floor((differenceBetweenDates) / (millisecondsInDay));
@@ -51,7 +51,7 @@ if (weekOfTheYear % 2 == 0) {
     const trashBox = document.createElement("div");
     trashBox.id = "trashBox";
     trashBox.classList.add("trashBox");
-    trashBox.innerHTML = "<span>Popelnice</span>";
+    trashBox.innerHTML = today === objDay[2][1] ? "<span style='border-radius: 12px;' class='basic-box trash selected'>Popelnice</span>" : "<span style='border-radius: 12px;' class='basic-box trash'>Popelnice</span>";
     document.body.appendChild(trashBox);
 }
 
@@ -60,9 +60,9 @@ for (let i = 0; i < objDay.length; i++) {
     weekOfTheYear % 2 === 0 ? helper = 0 : helper = 1
     if (i % 2 !== helper) {
         if (today === objDay[i][1]) {
-            result = result + "<span class='dayBox selectedDay'>" + objDay[i][0] + "</span>"
+            result = result + "<span class='basic-box day-box selected'>" + objDay[i][0] + "</span>"
         } else {
-            result = result + "<span class='dayBox'>" + objDay[i][0] + "</span>"
+            result = result + "<span class='basic-box day-box'>" + objDay[i][0] + "</span>"
         }
     }
 }
